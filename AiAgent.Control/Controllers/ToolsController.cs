@@ -36,7 +36,7 @@ public class ToolsController : ControllerBase
     /// <summary>
     /// Возвращает ответ модели с использованием сведений о системе.
     /// </summary>
-    [HttpPost("tools/sysinfo")]
+    [HttpPost("sysinfo")]
     public async Task<ActionResult<ChatResponse>> AskAsync(
         [FromBody] ChatRequest chatRequest,
         CancellationToken cancellationToken)
@@ -49,7 +49,7 @@ public class ToolsController : ControllerBase
 
         return Ok(response.ToChatResponse());
     }
-
+    
     /// <summary>
     /// Возвращает ответ модели с использованием сведений об активном проекте в КИПАРИС.
     /// </summary>

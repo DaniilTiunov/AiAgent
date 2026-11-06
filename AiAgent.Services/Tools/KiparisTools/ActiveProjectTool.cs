@@ -2,7 +2,7 @@ using System.Text.Json;
 using AiAgent.Services.Client;
 using AiAgent.Services.Tools.Interfaces;
 using AiAgent.Services.Tools.Models;
-using ReportEngine.Contracts.Project;
+using ReportEngine.Contracts.Models.Project;
 
 namespace AiAgent.Services.Tools.KiparisTools;
 

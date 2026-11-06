@@ -15,13 +15,26 @@ public class KiparisProjectService
     public Task<KiparisResponse> GetAppStateAsync(
         CancellationToken cancellationToken = default)
     {
-        var request = new KiparisRequest
+        var request = CreateRequest(new KiparisCommands(commandName: "get_app_state"));
+
+        return _kiparisClient.SendAsync(request, cancellationToken);
+    }
+
+    public Task<KiparisResponse> GetProcessInfoAsync(
+        CancellationToken cancellationToken = default)
+    {
+        var request = CreateRequest(new KiparisCommands(commandName: "get_process"));
+        
+        return _kiparisClient.SendAsync(request, cancellationToken);
+    }
+    
+    private KiparisRequest CreateRequest(KiparisCommands commandName)
+    {
+        return new KiparisRequest
         {
             ProtocolVersion = 1,
             Id = Guid.NewGuid(),
-            Command = KiparisCommands.GetAppState
+            Command = commandName.CommandName
         };
-
-        return _kiparisClient.SendAsync(request, cancellationToken);
     }
 }

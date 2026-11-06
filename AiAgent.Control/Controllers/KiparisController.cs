@@ -1,8 +1,6 @@
 using AiAgent.Services.Client;
-using AiAgent.Services.Kiparis;
 using Microsoft.AspNetCore.Mvc;
 using ReportEngine.Contracts.Messages;
-// ReSharper disable All
 
 namespace AiAgent.Control.Controllers;
 
@@ -31,7 +29,34 @@ public class KiparisController : ControllerBase
                 cancellationToken);
 
             _logger.LogInformation("Запрос на получение активного проекта успешен");
-            
+
+            return Ok(response);
+        }
+        catch (TimeoutException)
+        {
+            return Problem(
+                statusCode: 504,
+                detail: "Не удалось дождаться подключения или ответа КИПАРИС.");
+        }
+        catch (IOException)
+        {
+            return Problem(
+                statusCode: 503,
+                detail: "Соединение с КИПАРИС недоступно или прервано.");
+        }
+    }
+
+    [HttpGet("processinfo")]
+    public async Task<ActionResult<KiparisResponse>> GetProcessInfoAsync(
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            var response = await _kiparisProjectService.GetProcessInfoAsync(
+                cancellationToken);
+
+            _logger.LogInformation("Запрос на получение активного процесса успешен");
+
             return Ok(response);
         }
         catch (TimeoutException)

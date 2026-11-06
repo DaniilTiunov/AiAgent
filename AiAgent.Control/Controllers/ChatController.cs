@@ -44,7 +44,6 @@ public class ChatController : ControllerBase
                 Content = chatRequest.Message
             }
         ];
-        ;
 
         var response = await _requestService.AskAsync(
             requestModel,

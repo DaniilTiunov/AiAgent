@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "kiparis api"
+  type: workspace
+
+collections:
+  - name: "kiparis apis"
+    path: "../kiparis apis"
+
+specs:
+
+docs: ''
