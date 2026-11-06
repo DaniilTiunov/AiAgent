@@ -1,0 +1,7 @@
+<Solution>
+    <Project Path="../ReportEngine/ReportEngine.Contracts/ReportEngine.Contracts.csproj" />
+    <Project Path="AiAgent.Control/AiAgent.Control.csproj" />
+    <Project Path="AiAgent.DependencyInjection/AiAgent.DependencyInjection.csproj" />
+    <Project Path="AiAgent.Services/AiAgent.Services.csproj" />
+    <Project Path="AiAgent.Tests/AiAgent.Tests.csproj" />
+</Solution>
